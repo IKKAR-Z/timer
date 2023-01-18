@@ -23,3 +23,6 @@ body { background-color: rgba(0, 0, 0,0); //margin: 0px auto; overflow: hidden; 
   
 リセット：  
 対話のウィンドウを表示してタイマー停止状態でキーボードのいずれかのキー押す  
+  
+設定・使用方法の参考動画はこちら
+[![設定・使用方法の参考動画](https://user-images.githubusercontent.com/122454789/213174578-40f087a7-9392-4301-98c3-8aff647fd536.png)](https://youtu.be/vaROzkrFeGo)
