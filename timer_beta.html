@@ -11,13 +11,13 @@
 				align-content: start;
 				font-family:monospace;
 			}
-			p{
+			a{
 				margin-block-start: 0px;
 			}
 		</style>
 	</head>
 	<body>
-		<p id="msg" onclick="ti_mer()">0:00:00</p><p id="msg2">.00</p>
+		<a id="msg" onclick="ti_mer()">0:00:00</a><a id="msg2">.00</a>
 		<script>
 			let st_op=1;
 			let bias_time=-5000;
@@ -47,9 +47,10 @@
 						//msg.innerText = (delta/1000).toFixed(2);
 						if(delta>=0){
 							msg.innerText = hh+":"+('00'+mm).slice(-2)+":"+('00'+ss).slice(-2);
-							msg2.innerText = "." + ((sss-ss)*100)
+							msg2.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
 						}else{
-							msg.innerText = sss;
+							msg.innerText = ('00'+ss).slice(-2);
+							msg.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
 						}
 					},33.33);
 				}
