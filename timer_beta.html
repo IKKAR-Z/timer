@@ -4,6 +4,7 @@
 			body{
 				user-select:none;
 				display: grid;
+				grid-template-columns: auto 2em;
 				justify-items:end;
 				margin-top: 0px;
 				margin-right: 0px;
@@ -11,13 +12,16 @@
 				align-content: start;
 				font-family:monospace;
 			}
-			a{
+			p{
 				margin-block-start: 0px;
+			}
+			#msg2{
+				justify-items:start;
 			}
 		</style>
 	</head>
 	<body>
-		<a id="msg" onclick="ti_mer()">0:00:00</a><a id="msg2">.00</a>
+		<p id="msg" onclick="ti_mer()">0:00:00</p><p id="msg2">.00</p>
 		<script>
 			let st_op=1;
 			let bias_time=-5000;
@@ -50,7 +54,7 @@
 							msg2.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
 						}else{
 							msg.innerText = ('00'+ss).slice(-2);
-							msg.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
+							msg2.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
 						}
 					},33.33);
 				}
