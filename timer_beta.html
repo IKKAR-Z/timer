@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<style type="text/css">
-			body{
+			div{
 				user-select:none;
 				display: grid;
 				grid-template-columns: auto 2em;
@@ -21,10 +21,12 @@
 		</style>
 	</head>
 	<body>
-		<p id="msg" onclick="ti_mer()">0:00:00</p><p id="msg2">.00</p>
+		<div onclick="ti_mer()">
+			<p id="msg1">0:00:00</p><p id="msg2">.00</p>
+		</div>
 		<script>
 			let st_op=1;
-			let bias_time=-5000;
+			let bias_time=-10000;
 			let delta=0;
 			function ti_mer(){
 				if(st_op==0){
@@ -50,10 +52,10 @@
 						ss=Math.trunc(((delta/60000)-Math.trunc(delta/60000))*60);
 						//msg.innerText = (delta/1000).toFixed(2);
 						if(delta>=0){
-							msg.innerText = hh+":"+('00'+mm).slice(-2)+":"+('00'+ss).slice(-2);
+							msg1.innerText = hh+":"+('00'+mm).slice(-2)+":"+('00'+ss).slice(-2);
 							msg2.innerText = "." + ('00'+Math.trunc((sss-ss)*100)).slice(-2);
 						}else{
-							msg.innerText = Math.floor(((delta/60000)-Math.trunc(delta/60000))*60);
+							msg1.innerText = Math.floor(((delta/60000)-Math.trunc(delta/60000))*60);
 							msg2.innerText = "";
 						}
 					},33.33);
@@ -62,7 +64,7 @@
 			document.onkeydown = function(){
 				if (st_op==1){
 					bias_time=-5000;
-					msg.innerText = "0:00:00";
+					msg1.innerText = "0:00:00";
 					msg2.innerText = ".00";
 				}
 			}
