@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<style type="text/css">
+			body{
+				user-select:none;
+				display: grid;
+				justify-items:end;
+				margin-top: 0px;
+				margin-right: 0px;
+				align-items: start;
+				align-content: start;
+				font-family:monospace;
+			}
+			p{
+				margin-block-start: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="msg" onclick="ti_mer()">0:00:00.00</p>
+		<script>
+			let st_op=1;
+			let bias_time=-5000;
+			let delta=0;
+			function ti_mer(){
+				if(st_op==0){
+					st_op=1;
+					clearInterval(tim_erloop);
+					bias_time=delta;
+				}else{
+					st_op=0;
+					let date_obj = new Date();
+					let st = date_obj.getTime();
+					let nt;
+					let hh;
+					let mm;
+					let sss;
+					tim_erloop = setInterval(function() {
+						date_obj = new Date();
+						nt = date_obj.getTime();
+						delta = nt - st + bias_time;
+						hh=Math.trunc(delta/3600000);
+						mm=Math.trunc(delta/60000)-hh*60;
+						sss=(((delta/60000)-Math.trunc(delta/60000))*60).toFixed(2);
+						//msg.innerText = (delta/1000).toFixed(2);
+						if(delta>=0){
+							msg.innerText = hh+":"+('00'+mm).slice(-2)+":"+('00'+sss).slice(-5);
+						}else{
+							msg.innerText = sss;
+						}
+					},33.33);
+				}
+			}
+			document.onkeydown = function(){
+				if (st_op==1){
+					bias_time=-5000;
+					msg.innerText = "0:00:00.00";
+				}
+			}
+		</script>
+	</body>
+</html>
